@@ -17,6 +17,7 @@ try:
 
 
 except:
+    # If unable to find data initialize it to empty one
     accumulated=[]
 
 
@@ -46,7 +47,7 @@ password.send_keys(Keys.RETURN)
 # ___________________________________
 # Need to filter data and store it
 # ___________________________________
-print(accumulated)
+
 while tries>0:
     posts = driver.find_elements_by_xpath(".//div[contains(@class, '_5pbx userContent _3576')]")
 
@@ -59,11 +60,11 @@ while tries>0:
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # add new data
     for postText in posts:
-        print(postText.text)
+        
         if postText.text not in accumulated:
 
             accumulated.append(postText.text)
-            print(accumulated)
+            
     # Refresh the page
     driver.refresh()
 
@@ -82,7 +83,7 @@ while tries>0:
 
 # ______Write to the file_________
 
-print("<><><><><><><><>")
+print("<><><><><  Data so far captured   ><><><>")
 print(accumulated)
 with open('facebook_db',"wb") as writeme:
    dump(accumulated,writeme)
