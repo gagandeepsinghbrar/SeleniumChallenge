@@ -22,7 +22,7 @@ except:
 
 
 
-tries=5
+tries=10
 
 driver = webdriver.Chrome()
 driver.get("http://www.facebook.com")
